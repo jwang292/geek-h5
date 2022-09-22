@@ -1,16 +1,34 @@
 import React from 'react'
-import Icon from '../../componets/Icon'
-import './index.scss'
-
+import NavBar from '../../componets/NavBar'
+import styles from './index.module.scss'
+import Input from '../../componets/input'
 export default function Login() {
+  const onExtraClick = () => {
+    console.log(12)
+  }
   return (
-    <div>
-      <h1>login</h1>
-      <Icon
-        type="iconfanhui"
-        className="big"
-        onClick={() => alert('hi')}
-      ></Icon>
+    <div className={styles.root}>
+      <NavBar>Login</NavBar>
+      <div className="content">
+        <h3>Phone Login</h3>
+        <form>
+          <div className="input-item">
+            <Input placeholder="enter a phone number"></Input>
+            <div className="validate">wrong verification code</div>
+          </div>
+          <div className="input-item">
+            <Input
+              placeholder="enter the verification code"
+              extra="get verfication code"
+              onExtraClick={onExtraClick}
+            ></Input>
+            <div className="validate">wrong verification code</div>
+          </div>
+          <button className="login-btn">Login</button>
+        </form>
+      </div>
+      <NavBar extra="middle">Home</NavBar>
+      <NavBar extra="right">Article</NavBar>
     </div>
   )
 }
