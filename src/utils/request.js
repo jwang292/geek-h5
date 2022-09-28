@@ -2,18 +2,22 @@ import axios from 'axios'
 import { Toast } from 'antd-mobile'
 import { getTokenInfo } from './storage'
 const instance = axios.create({
-  timeout: 3000,
+  timeout: 5000,
   baseURL: 'http://geek.itheima.net/v1_0',
 })
 
-instance.interceptors.request.use(
-  (config) => {
-    //获取token
-    const token = getTokenInfo().token
-    if (token) {
-      config.headers.Authorization = 'Bearer ' + token
-    }
-    return config
+instance.interceptors.request.use((config) => {
+  //获取token
+  const token = getTokenInfo().token
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`
+  }
+  return config
+})
+
+instance.interceptors.response.use(
+  (response) => {
+    return response.data
   },
   (error) => {
     if (error.response) {
@@ -30,4 +34,5 @@ instance.interceptors.request.use(
     return Promise.reject(error)
   }
 )
+
 export default instance
