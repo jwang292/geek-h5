@@ -17,3 +17,15 @@ export const getUser = () => {
     dispatch(saveUser(res.data))
   }
 }
+export const saveProfile = (payload) => {
+  return {
+    type: 'profile/profile',
+    payload,
+  }
+}
+export const getProfile = () => {
+  return async (dispatch) => {
+    const res = await instance.get('/user/profile')
+    dispatch(saveProfile(res.data))
+  }
+}

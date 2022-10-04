@@ -8,7 +8,8 @@ import {
 } from 'react-router-dom'
 import Login from './pages/Login'
 import Home from './pages/Layout'
-
+import ProfileEdit from './pages/Profile/Edit'
+import ProfileChat from './pages/Profile/Chat'
 //按需加载
 // const Login = React.lazy(() => {
 //   import('./pages/Login')
@@ -29,6 +30,8 @@ export default function App() {
           <Redirect exact from="/" to="/home"></Redirect>
           <Route path="/home" component={Home}></Route>
           <Route path="/login" component={Login}></Route>
+          <Route path="/profile/edit" component={ProfileEdit}></Route>
+          <Route path="/profile/chat" component={ProfileChat}></Route>
         </Switch>
         {/* </Suspense> */}
       </div>

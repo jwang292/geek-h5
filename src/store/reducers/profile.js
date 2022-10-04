@@ -14,5 +14,12 @@ export default function reducer(state = initValue, action) {
       user: action.payload,
     }
   }
+
+  if (action.type === 'profile/profile') {
+    return {
+      ...state,
+      profile: action.payload,
+    }
+  }
   return state
 }
