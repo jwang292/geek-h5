@@ -8,9 +8,10 @@ import classNames from 'classnames'
 import { useDispatch } from 'react-redux'
 import { login, sendCode } from '../../store/actions/login'
 import { Toast } from 'antd-mobile'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useLocation } from 'react-router-dom'
 export default function Login() {
   const history = useHistory()
+  const location = useLocation
   const formik = useFormik({
     initialValues: {
       mobile: '',
@@ -23,7 +24,11 @@ export default function Login() {
         icon: 'success',
         content: 'success login',
       })
-      history.push('/home')
+      if (location.from) {
+        history.push(location.from)
+      } else {
+        history.push('/home')
+      }
     },
     validationSchema: Yup.object({
       mobile: Yup.string()

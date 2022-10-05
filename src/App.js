@@ -10,6 +10,7 @@ import Login from './pages/Login'
 import Home from './pages/Layout'
 import ProfileEdit from './pages/Profile/Edit'
 import ProfileChat from './pages/Profile/Chat'
+import AuthRoute from './componets/AuthRoute'
 //按需加载
 // const Login = React.lazy(() => {
 //   import('./pages/Login')
@@ -26,12 +27,12 @@ export default function App() {
         {/* <Suspense fallback={<div>loading</div>}> */}
         <Switch>
           {/* 组件加载中，显示loading */}
-
           <Redirect exact from="/" to="/home"></Redirect>
           <Route path="/home" component={Home}></Route>
           <Route path="/login" component={Login}></Route>
-          <Route path="/profile/edit" component={ProfileEdit}></Route>
-          <Route path="/profile/chat" component={ProfileChat}></Route>
+          {/* 需要登录才能访问 */}
+          <AuthRoute path="/profile/edit" component={ProfileEdit}></AuthRoute>
+          <AuthRoute path="/profile/chat" component={ProfileChat}></AuthRoute>
         </Switch>
         {/* </Suspense> */}
       </div>
