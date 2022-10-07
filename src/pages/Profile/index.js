@@ -90,7 +90,7 @@ const Profile = () => {
             onClick={() => history.push('/profile/chat')}
           >
             <Icon type="iconbtn_xiaozhitongxue" />
-            <div>小智同学</div>
+            <div>Live Chat</div>
           </div>
         </div>
       </div>

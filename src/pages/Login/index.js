@@ -11,7 +11,7 @@ import { Toast } from 'antd-mobile'
 import { useHistory, useLocation } from 'react-router-dom'
 export default function Login() {
   const history = useHistory()
-  const location = useLocation
+  const location = useLocation()
   const formik = useFormik({
     initialValues: {
       mobile: '',
@@ -24,11 +24,8 @@ export default function Login() {
         icon: 'success',
         content: 'success login',
       })
-      if (location.from) {
-        history.push(location.from)
-      } else {
-        history.push('/home')
-      }
+      const pathname = location.state ? location.state.from : '/home'
+      history.replace(pathname)
     },
     validationSchema: Yup.object({
       mobile: Yup.string()

@@ -11,6 +11,8 @@ import Home from './pages/Layout'
 import ProfileEdit from './pages/Profile/Edit'
 import ProfileChat from './pages/Profile/Chat'
 import AuthRoute from './componets/AuthRoute'
+import history from './utils/history'
+import NotFound from './pages/NotFound'
 //按需加载
 // const Login = React.lazy(() => {
 //   import('./pages/Login')
@@ -20,7 +22,7 @@ import AuthRoute from './componets/AuthRoute'
 // })
 export default function App() {
   return (
-    <Router>
+    <Router history={history}>
       <div className="app">
         {/* <Link to="./login">login</Link>
         <Link to="./home">home</Link> */}
@@ -33,6 +35,8 @@ export default function App() {
           {/* 需要登录才能访问 */}
           <AuthRoute path="/profile/edit" component={ProfileEdit}></AuthRoute>
           <AuthRoute path="/profile/chat" component={ProfileChat}></AuthRoute>
+          {/* 不用写path这样前面路由都匹配不到就是404 会自动访问 */}
+          <Route component={NotFound}></Route>
         </Switch>
         {/* </Suspense> */}
       </div>

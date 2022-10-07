@@ -1,5 +1,5 @@
 import request from '../../utils/request'
-import { setTokenInfo } from '../../utils/storage'
+import { removeTokenInfo, setTokenInfo } from '../../utils/storage'
 
 export const sendCode = (mobile) => {
   //获取验证码不需要 保存数据，所以不用传dispatch
@@ -34,5 +34,14 @@ export const login = (data) => {
     dispatch(saveToken(res.data))
     //保存本地
     setTokenInfo(res.data)
+  }
+}
+
+export const logout = () => {
+  return (dispatch) => {
+    removeTokenInfo()
+    dispatch({
+      type: 'login/logout',
+    })
   }
 }

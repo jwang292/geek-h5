@@ -71,7 +71,7 @@ const Chat = () => {
   return (
     <div className={styles.root}>
       {/* 顶部导航栏 */}
-      <NavBar className="fixed-header">小智同学</NavBar>
+      <NavBar className="fixed-header">live chat</NavBar>
 
       {/* 聊天记录列表 */}
       <div className="chat-list">
